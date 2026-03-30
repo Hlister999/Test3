@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Hentai Vault - Instant Telegram Downloads</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --bg-deep: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --neon-pink: #ff0066;
+            --neon-glow: #ff3399;
+            --text-main: #ffffff;
+            --text-sec: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-glow); }
+
+        /* Glassmorphism & Neon */
+        .glass-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 0, 102, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .glass-card:hover {
+            border-color: var(--neon-glow);
+            box-shadow: 0 0 25px rgba(255, 51, 153, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Neon Text */
+        .text-neon {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px rgba(255, 0, 102, 0.5);
+        }
+
+        /* Premium Buttons */
+        .btn-neon {
+            background: var(--neon-pink);
+            color: #fff;
+            border-radius: 20px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 102, 0.4);
+            cursor: pointer;
+            border: none;
+        }
+        .btn-neon:hover {
+            background: var(--neon-glow);
+            box-shadow: 0 0 25px rgba(255, 51, 153, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* Image Overlays */
+        .img-container {
+            width: 100%;
+            aspect-ratio: 320 / 400; /* Fixed aspect ratio as requested */
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px 15px 0 0;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .glass-card:hover .img-container img {
+            transform: scale(1.1);
+        }
+        .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.6) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 12px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        /* Hero Carousel */
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            pointer-events: none;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Watermark */
+        #watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.05;
+            font-size: 10px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* View Router Hidden Class */
+        .view-hidden { display: none !important; }
+        
+        .nav-link { cursor: pointer; transition: color 0.3s; }
+        .nav-link:hover { color: var(--neon-pink); }
+    </style>
+</head>
+<body>
+
+    <!-- Watermark -->
+    <div id="watermark">© 2026 Premium Vault</div>
+
+    <!-- 18+ Sticky Banner -->
+    <div class="bg-[#ff0066] text-white text-center py-2 text-xs font-bold tracking-widest uppercase z-50 relative shadow-[0_0_10px_#ff0066]">
+        <span class="lang-text" data-en="18+ ONLY • Adult Hentai Content • No Minors Allowed • For Entertainment Purposes Only" data-hi="केवल 18+ • वयस्क हेंटाई सामग्री • नाबालिगों की अनुमति नहीं • केवल मनोरंजन के लिए">18+ ONLY • Adult Hentai Content • No Minors Allowed • For Entertainment Purposes Only</span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#ff0066]/20">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-2 cursor-pointer sfx-click" onclick="navigate('home')">
+                <i class="fas fa-fire text-[#ff0066] text-2xl drop-shadow-[0_0_8px_#ff0066]"></i>
+                <h1 class="text-2xl font-poppins font-black tracking-tight">H<span class="text-[#ff0066]">VAULT</span></h1>
+            </div>
+            
+            <div class="flex-1 max-w-xl mx-4 relative hidden md:block">
+                <input type="text" id="searchInput" class="w-full bg-[#1a1a1a] border border-[#ff0066]/30 rounded-full py-2 px-6 text-sm text-white focus:outline-none focus:border-[#ff3399] transition-colors" placeholder="Search titles, tags...">
+                <i class="fas fa-search absolute right-4 top-3 text-[#e0e0e0]"></i>
+            </div>
+
+            <nav class="flex items-center gap-6 font-semibold text-sm">
+                <a onclick="navigate('home')" class="nav-link sfx-hover"><span class="lang-text" data-en="Home" data-hi="होम">Home</span></a>
+                <a onclick="navigate('browse')" class="nav-link sfx-hover"><span class="lang-text" data-en="Browse All" data-hi="सभी देखें">Browse All</span></a>
+                <a href="#telegram" class="nav-link text-[#0088cc] sfx-hover"><i class="fab fa-telegram"></i> Telegram</a>
+                <button onclick="toggleLang()" class="bg-[#1a1a1a] px-3 py-1 rounded border border-white/10 text-xs sfx-click" id="langBtn">EN/HI</button>
+            </nav>
+        </div>
+        <!-- Mobile Search -->
+        <div class="md:hidden px-4 pb-4">
+            <input type="text" id="searchInputMobile" class="w-full bg-[#1a1a1a] border border-[#ff0066]/30 rounded-full py-2 px-6 text-sm text-white focus:outline-none focus:border-[#ff3399]" placeholder="Search...">
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA (SPA Router) -->
+    <main id="app-container" class="min-h-screen pb-20">
+        
+        <!-- ================= HOME VIEW ================= -->
+        <section id="view-home" class="view-hidden">
+            <!-- Hero Carousel -->
+            <div class="relative w-full h-[60vh] md:h-[70vh] bg-[#0a0a0a] overflow-hidden" id="heroCarousel">
+                <!-- Injected via JS -->
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 mt-12">
+                <!-- Latest / Featured Grid -->
+                <div class="flex justify-between items-end mb-6 border-b border-[#1a1a1a] pb-2">
+                    <h2 class="text-3xl font-poppins font-bold text-neon"><i class="fas fa-bolt mr-2"></i><span class="lang-text" data-en="Latest Uploads" data-hi="नवीनतम अपलोड">Latest Uploads</span></h2>
+                    <a onclick="navigate('browse')" class="text-sm text-[#e0e0e0] hover:text-[#ff0066] cursor-pointer sfx-hover"><span class="lang-text" data-en="View All" data-hi="सभी देखें">View All</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6" id="homeGrid">
+                    <!-- Cards injected via JS -->
+                </div>
+
+                <!-- Upcoming Section -->
+                <div class="mt-16 mb-6 border-b border-[#1a1a1a] pb-2">
+                    <h2 class="text-3xl font-poppins font-bold text-white"><i class="fas fa-clock text-[#ff0066] mr-2"></i><span class="lang-text" data-en="Coming Soon" data-hi="जल्द आ रहा है">Coming Soon</span></h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 opacity-70" id="upcomingGrid">
+                    <!-- Upcoming cards injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BROWSE VIEW (Pagination) ================= -->
+        <section id="view-browse" class="view-hidden max-w-7xl mx-auto px-4 pt-10">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+                <h2 class="text-3xl font-poppins font-bold text-neon"><i class="fas fa-folder-open mr-2"></i><span class="lang-text" data-en="Browse Vault" data-hi="वॉल्ट ब्राउज़ करें">Browse Vault</span></h2>
+                <div class="text-[#e0e0e0] text-sm" id="searchResultText"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6" id="browseGrid">
+                <!-- Cards injected via JS -->
+            </div>
+
+            <!-- Dynamic Pagination -->
+            <div class="mt-12 flex justify-center items-center gap-2" id="paginationControls">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- ================= VIDEO DETAIL VIEW ================= -->
+        <section id="view-video" class="view-hidden max-w-5xl mx-auto px-4 pt-10">
+            <button onclick="navigate('browse')" class="mb-6 text-[#e0e0e0] hover:text-[#ff0066] transition-colors sfx-click"><i class="fas fa-arrow-left mr-2"></i> Back to Browse</button>
+            <div id="videoDetailContent" class="glass-card rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-10">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- ================= ADMIN PANEL VIEW ================= -->
+        <section id="view-admin" class="view-hidden max-w-6xl mx-auto px-4 pt-10">
+            <div id="adminLogin" class="max-w-md mx-auto glass-card p-8 rounded-2xl mt-20 text-center">
+                <i class="fas fa-lock text-4xl text-[#ff0066] mb-4"></i>
+                <h2 class="text-2xl font-poppins font-bold mb-6">Admin Access</h2>
+                <input type="password" id="adminPwd" class="w-full bg-[#0a0a0a] border border-[#ff0066]/30 rounded-lg py-3 px-4 text-white mb-4 focus:border-[#ff0066] outline-none" placeholder="Enter Password">
+                <button onclick="checkAdmin()" class="btn-neon w-full py-3 sfx-click">Login</button>
+                <p class="text-xs text-zinc-500 mt-4">Hint: MySecretPass123</p>
+            </div>
+
+            <div id="adminDashboard" class="hidden">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-poppins font-bold text-neon"><i class="fas fa-cogs mr-2"></i>Admin Dashboard</h2>
+                    <div class="flex gap-4">
+                        <button onclick="exportJSON()" class="bg-[#1a1a1a] border border-[#ff0066] text-[#ff0066] px-4 py-2 rounded-lg hover:bg-[#ff0066] hover:text-white transition-colors sfx-click"><i class="fas fa-download mr-2"></i> Export videos.json</button>
+                        <button onclick="logoutAdmin()" class="text-zinc-400 hover:text-white sfx-click"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Add Form -->
+                    <div class="glass-card p-6 rounded-2xl h-fit">
+                        <h3 class="font-poppins font-bold mb-4 text-xl border-b border-[#ff0066]/30 pb-2">Add New Entry</h3>
+                        <form id="addVideoForm" class="space-y-4">
+                            <input type="text" id="addTitle" placeholder="Title" required class="w-full bg-[#0a0a0a] border border-white/10 rounded p-2 text-sm outline-none focus:border-[#ff0066]">
+                            <input type="text" id="addImg" placeholder="Image URL (320x400 best)" required class="w-full bg-[#0a0a0a] border border-white/10 rounded p-2 text-sm outline-none focus:border-[#ff0066]">
+                            <div class="flex gap-2">
+                                <input type="text" id="addEp" placeholder="Episode (e.g. Ep 1)" required class="w-1/2 bg-[#0a0a0a] border border-white/10 rounded p-2 text-sm outline-none focus:border-[#ff0066]">
+                                <input type="number" id="addRating" placeholder="Rating (1-5)" min="1" max="5" required class="w-1/2 bg-[#0a0a0a] border border-white/10 rounded p-2 text-sm outline-none focus:border-[#ff0066]">
+                            </div>
+                            <input type="text" id="addTags" placeholder="Tags (comma separated)" required class="w-full bg-[#0a0a0a] border border-white/10 rounded p-2 text-sm outline-none focus:border-[#ff0066]">
+                            <input type="text" id="addLink" placeholder="Telegram Link" required class="w-full bg-[#0a0a0a] border border-white/10 rounded p-2 text-sm outline-none focus:border-[#ff0066]">
+                            <textarea id="addDesc" placeholder="Description" rows="3" required class="w-full bg-[#0a0a0a] border border-white/10 rounded p-2 text-sm outline-none focus:border-[#ff0066]"></textarea>
+                            <div class="flex gap-4 text-sm">
+                                <label><input type="checkbox" id="addFeatured"> Featured (Hero)</label>
+                                <label><input type="checkbox" id="addUpcoming"> Coming Soon</label>
+                            </div>
+                            <button type="submit" class="btn-neon w-full py-2 mt-2 sfx-click">Add Video</button>
+                        </form>
+                    </div>
+
+                    <!-- Manage List -->
+                    <div class="lg:col-span-2 glass-card p-6 rounded-2xl overflow-x-auto">
+                        <h3 class="font-poppins font-bold mb-4 text-xl border-b border-[#ff0066]/30 pb-2">Manage Database</h3>
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="text-[#ff0066]">
+                                    <th class="pb-2">Title</th>
+                                    <th class="pb-2">Ep</th>
+                                    <th class="pb-2">Type</th>
+                                    <th class="pb-2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody">
+                                <!-- Injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#050505] border-t border-[#1a1a1a] pt-10 pb-6">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
+            <div>
+                <h2 class="text-2xl font-poppins font-black tracking-tight mb-4">H<span class="text-[#ff0066]">VAULT</span></h2>
+                <p class="text-sm text-[#e0e0e0] mb-4">The greatest modern hentai download site. Direct Telegram links, 4K quality, zero ads. Own your collection.</p>
+                <a href="#telegram" class="inline-block btn-neon px-6 py-2 text-sm sfx-click"><i class="fab fa-telegram mr-2"></i> Join Official Channel</a>
+            </div>
+            <div>
+                <h3 class="font-bold text-white mb-4 uppercase tracking-widest text-sm">Quick Links</h3>
+                <ul class="space-y-2 text-sm text-[#e0e0e0]">
+                    <li><a onclick="navigate('home')" class="hover:text-[#ff0066] cursor-pointer sfx-hover">Home</a></li>
+                    <li><a onclick="navigate('browse')" class="hover:text-[#ff0066] cursor-pointer sfx-hover">Browse All</a></li>
+                    <li><a onclick="navigate('admin')" class="hover:text-[#ff0066] cursor-pointer sfx-hover text-zinc-600"><i class="fas fa-lock text-xs"></i> Admin</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-white mb-4 uppercase tracking-widest text-sm">Disclaimer</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed">
+                    18+ ONLY. This website contains adult hentai content. No minors allowed. We do not host any files on our servers; all links redirect to Telegram. For entertainment purposes only.
+                </p>
+            </div>
+        </div>
+        <div class="border-t border-[#1a1a1a] pt-6 text-center text-xs text-zinc-600 flex flex-col md:flex-row justify-between max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Your Channel. All Rights Reserved.</p>
+            <p>Built for the Elite.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // ================= AUDIO SYSTEM =================
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            
+            if (type === 'hover') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.05);
+            } else if (type === 'click') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+            }
+        }
+
+        // Add event listeners to classes
+        document.addEventListener('mouseover', (e) => { if(e.target.closest('.sfx-hover')) playSound('hover'); });
+        document.addEventListener('click', (e) => { if(e.target.closest('.sfx-click') || e.target.closest('button')) playSound('click'); });
+
+        // ================= SECURITY & PROTECTION =================
+        // Disable Right Click on Images
+        document.addEventListener('contextmenu', e => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+        // Console Warning
+        console.log("%c© 2026 Your Channel - All Rights Reserved", "color: #ff0066; font-size: 24px; font-weight: bold; background: #000; padding: 10px; border-radius: 5px;");
+        console.log("%cWarning: Source code is protected.", "color: #fff; font-size: 14px;");
+
+        // ================= DATABASE (Mock videos.json) =================
+        const defaultVideos = [
+            { id: 1, title: "Kenki Virgo", ep: "Ep 1-2", tags: ["Action", "Demons", "Uncensored"], rating: 5, desc: "A
